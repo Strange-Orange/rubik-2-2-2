@@ -1,0 +1,4 @@
+# Just want the directory not the contents, basically ignore the binary files
+*
+*/
+!.gitignore
