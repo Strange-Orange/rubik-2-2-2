@@ -40,15 +40,6 @@ const std::vector<std::string> gCUBELETS =
     "elb", "ble", "leb"
 };
 
-// const std::unordered_map<std::string, std::vector<std::string>> gFACES ({
-//     {"front", {"ful", "fur", "frb", "fbl"}}, 
-//     {"upper", {"ulf", "urf", "ule", "ure"}},
-//     {"left", {"lfu", "lfb", "leu", "leb"}},
-//     {"right", {"rfu", "rfb", "reu", "rbe"}},
-//     {"bottom", {"brf", "blf", "bre", "ble"}},
-//     {"end", {"eul", "eur", "ebr", "ebl"}}
-// });
-
 // Vertex in the graph
 struct Vertex
 {
