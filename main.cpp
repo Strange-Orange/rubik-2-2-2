@@ -30,13 +30,13 @@ struct VertexHash
 };
 
 std::string printCubeState(const Vertex& v);
-void initCube(std::unordered_map<std::string, std::string>& cubeState);
+void initCube(cubeMap& cubeState);
 std::string traceBack(const Vertex& sv, std::unordered_map<Vertex, Vertex, VertexHash>& parent);
-void handleInput(int argc, char* args[], std::unordered_map<std::string, std::string>& cube);
-bool checkCompletion(const std::unordered_map<std::string, std::string>& sCurrentState);
+void handleInput(int argc, char* args[], cubeMap& cube);
+bool checkCompletion(const cubeMap& sCurrentState);
 bool rotationRepeatOrReverse(const int pMove, const int cMove);
 void addToAdj(const Vertex& vStart, std::unordered_map<Vertex, std::vector<Vertex>, VertexHash>& adj);
-std::string solveCube(std::unordered_map<std::string, std::string>& cubeState);
+std::string solveCube(cubeMap& cubeState);
 
 std::string printCubeState(const Vertex& v)
 {
@@ -49,7 +49,7 @@ std::string printCubeState(const Vertex& v)
 }
 
 // Setup a non scrambled cube
-void initCube(std::unordered_map<std::string, std::string>& cubeState)
+void initCube(cubeMap& cubeState)
 {
     // Each of the 8 cubelets that make up the whole cube, each in all 3 orientations, each face is read as rotation around the 3 faces
     // The whole cube is never rotated, the whole cube is always in the same orientation
@@ -82,8 +82,9 @@ void initCube(std::unordered_map<std::string, std::string>& cubeState)
     }
 }
 
-void handleInput(int argc, char* args[], std::unordered_map<std::string, std::string>& cube)
+void handleInput(int argc, char* args[], cubeMap& cube)
 {
+    // Lazy code, should rewrite this
     for (int arg = 1; arg < argc; arg++)
     {
         const char* c = args[arg];
@@ -130,7 +131,7 @@ std::string traceBack(const Vertex& sv, std::unordered_map<Vertex, Vertex, Verte
 }
 
 // Check if the cube is solved
-bool checkCompletion(const std::unordered_map<std::string, std::string>& sCurrentState)
+bool checkCompletion(const cubeMap& sCurrentState)
 {
     for (size_t side = 0; side < gSIDES.size(); side++)
     {
@@ -195,7 +196,7 @@ void addToAdj(const Vertex& vStart, std::unordered_map<Vertex, std::vector<Verte
     }
 }
 
-std::string solveCube(std::unordered_map<std::string, std::string>& cubeState)
+std::string solveCube(cubeMap& cubeState)
 {
 
     Vertex vStartState(cubeState, "\0");
@@ -248,7 +249,7 @@ std::string solveCube(std::unordered_map<std::string, std::string>& cubeState)
 
 int main(int argc, char* args[])
 {
-    std::unordered_map<std::string, std::string> cubeState;
+    cubeMap cubeState;
     initCube(cubeState);
     handleInput(argc, args, cubeState);
 

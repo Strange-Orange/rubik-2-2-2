@@ -6,6 +6,7 @@
 #include <vector>
 #include <array>
 
+typedef std::unordered_map<std::string, std::string> cubeMap;
 // Array of function pointers
 typedef std::array<std::string (*)(std::unordered_map<std::string, std::string>&), 18> rFunctions;
 
@@ -43,7 +44,7 @@ const std::vector<std::string> gCUBELETS =
 // Vertex in the graph
 struct Vertex
 {
-    std::unordered_map<std::string, std::string> m_lState;
+    cubeMap m_lState;
     // if m_previousMove is "\0" then it has no parents
     std::string m_previousMove;
     // If m_previousMoveIndex is -1 then it is the start state
@@ -52,7 +53,7 @@ struct Vertex
     Vertex()
         : m_lState(), m_previousMove("\0"), m_previousMoveIndex(-1) {};
 
-    Vertex(std::unordered_map<std::string, std::string> state, std::string move, int moveIndex=-1)
+    Vertex(cubeMap state, std::string move, int moveIndex=-1)
         : m_lState(state), m_previousMove(move), m_previousMoveIndex(moveIndex) {};
 
     // Compare the m_lState unordered_maps

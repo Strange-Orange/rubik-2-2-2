@@ -6,7 +6,7 @@
 #include <string>
 #include <array>
 
-void getCubelet(std::array<std::string, 3>& temp, std::unordered_map<std::string, std::string>& state, int startPoint)
+void getCubelet(std::array<std::string, 3>& temp, cubeMap& state, int startPoint)
 {
     for (size_t i = startPoint, tp = 0; i < (startPoint + temp.size()); i++, tp++)
     {
@@ -14,7 +14,7 @@ void getCubelet(std::array<std::string, 3>& temp, std::unordered_map<std::string
     }
 }
 
-std::string frontClockwise(std::unordered_map<std::string, std::string>& state)
+std::string frontClockwise(cubeMap& state)
 {
     // front left upper to front right upper
     std::array<std::string, 3> temps;
@@ -43,7 +43,7 @@ std::string frontClockwise(std::unordered_map<std::string, std::string>& state)
     return "fc";
 }
 
-std::string frontAntiClockwise(std::unordered_map<std::string, std::string>& state)
+std::string frontAntiClockwise(cubeMap& state)
 {
     // Front left upper to front left bottom
     std::array<std::string, 3> temps;
@@ -71,14 +71,14 @@ std::string frontAntiClockwise(std::unordered_map<std::string, std::string>& sta
     return "f`";
 }
 
-std::string frontDouble(std::unordered_map<std::string, std::string>& state)
+std::string frontDouble(cubeMap& state)
 {
     frontClockwise(state);
     frontClockwise(state);
     return "2f";
 }
 
-std::string upperClockwise(std::unordered_map<std::string, std::string>& state)
+std::string upperClockwise(cubeMap& state)
 {
     // Front left upper to right end upper 
     std::array<std::string, 3> temps;
@@ -107,7 +107,7 @@ std::string upperClockwise(std::unordered_map<std::string, std::string>& state)
     return "uc";
 }
 
-std::string upperAntiClockwise(std::unordered_map<std::string, std::string>& state)
+std::string upperAntiClockwise(cubeMap& state)
 {
     // Front left upper to right front upper
     std::array<std::string, 3> fru;
@@ -138,14 +138,14 @@ std::string upperAntiClockwise(std::unordered_map<std::string, std::string>& sta
     return "u`";
 }
 
-std::string upperDouble(std::unordered_map<std::string, std::string>& state)
+std::string upperDouble(cubeMap& state)
 {
     upperClockwise(state);
     upperClockwise(state);
     return "2u";
 }
 
-std::string leftClockwise(std::unordered_map<std::string, std::string>& state)
+std::string leftClockwise(cubeMap& state)
 {
     // Front left upper to bottom left front
     std::array<std::string, 3> blf;
@@ -176,7 +176,7 @@ std::string leftClockwise(std::unordered_map<std::string, std::string>& state)
     return "lc";
 }
 
-std::string leftAntiClockwise(std::unordered_map<std::string, std::string>& state)
+std::string leftAntiClockwise(cubeMap& state)
 {
     // Front left upper to upper end left
     std::array<std::string, 3> uel;
@@ -207,14 +207,14 @@ std::string leftAntiClockwise(std::unordered_map<std::string, std::string>& stat
     return "l`";
 }
 
-std::string leftDouble(std::unordered_map<std::string, std::string>& state)
+std::string leftDouble(cubeMap& state)
 {
     leftClockwise(state);
     leftClockwise(state);
     return "2l";
 }
 
-std::string rightClockwise(std::unordered_map<std::string, std::string>& state)
+std::string rightClockwise(cubeMap& state)
 {
     // Front right upper to upper right end
     std::array<std::string, 3> ure;
@@ -245,7 +245,7 @@ std::string rightClockwise(std::unordered_map<std::string, std::string>& state)
     return "rc";
 }
 
-std::string rightAntiClockwise(std::unordered_map<std::string, std::string>& state)
+std::string rightAntiClockwise(cubeMap& state)
 {
     // Front right upper to bottom front right
     std::array<std::string, 3> bfr;
@@ -276,14 +276,14 @@ std::string rightAntiClockwise(std::unordered_map<std::string, std::string>& sta
     return "r`";
 }
 
-std::string rightDouble(std::unordered_map<std::string, std::string>& state)
+std::string rightDouble(cubeMap& state)
 {
     rightClockwise(state);
     rightClockwise(state);
     return "2r";
 }
 
-std::string bottomClockwise(std::unordered_map<std::string, std::string>& state)
+std::string bottomClockwise(cubeMap& state)
 {
     // Front left bottom to right bottom front
     std::array<std::string, 3> rbf;
@@ -314,7 +314,7 @@ std::string bottomClockwise(std::unordered_map<std::string, std::string>& state)
     return "bc";
 }
 
-std::string bottomAntiClockwise(std::unordered_map<std::string, std::string>& state)
+std::string bottomAntiClockwise(cubeMap& state)
 {
     // Front left bottom to left end bottom
     std::array<std::string, 3> leb;
@@ -345,14 +345,14 @@ std::string bottomAntiClockwise(std::unordered_map<std::string, std::string>& st
     return "b`";
 }
 
-std::string bottomDouble(std::unordered_map<std::string, std::string>& state)
+std::string bottomDouble(cubeMap& state)
 {
     bottomClockwise(state);
     bottomClockwise(state);
     return "2b";
 }
 
-std::string endClockwise(std::unordered_map<std::string, std::string>& state)
+std::string endClockwise(cubeMap& state)
 {
     // End right upper to end left upper
     std::array<std::string, 3> elu;
@@ -380,7 +380,7 @@ std::string endClockwise(std::unordered_map<std::string, std::string>& state)
     return "e";
 }
 
-std::string endAntiClockwise(std::unordered_map<std::string, std::string>& state)
+std::string endAntiClockwise(cubeMap& state)
 {
     // End left upper to end right upper 
     std::array<std::string, 3> eru;
@@ -409,7 +409,7 @@ std::string endAntiClockwise(std::unordered_map<std::string, std::string>& state
     return "e'";
 }
 
-std::string endDouble(std::unordered_map<std::string, std::string>& state)
+std::string endDouble(cubeMap& state)
 {
     endClockwise(state);
     endClockwise(state);

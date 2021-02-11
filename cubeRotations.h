@@ -8,31 +8,31 @@
 #include <string>
 #include <array>
 
-void getCubelet(std::array<std::string, 3>& temps, std::unordered_map<std::string, std::string>& state, int startPoint);
+void getCubelet(std::array<std::string, 3>& temps, cubeMap& state, int startPoint);
 
-std::string frontClockwise(std::unordered_map<std::string, std::string>& state);
-std::string frontAntiClockwise(std::unordered_map<std::string, std::string>& state);
-std::string frontDouble(std::unordered_map<std::string, std::string>& state);
+std::string frontClockwise(cubeMap& state);
+std::string frontAntiClockwise(cubeMap& state);
+std::string frontDouble(cubeMap& state);
 
-std::string upperClockwise(std::unordered_map<std::string, std::string>& state);
-std::string upperAntiClockwise(std::unordered_map<std::string, std::string>& state);
-std::string upperDouble(std::unordered_map<std::string, std::string>& state);
+std::string upperClockwise(cubeMap& state);
+std::string upperAntiClockwise(cubeMap& state);
+std::string upperDouble(cubeMap& state);
 
-std::string leftClockwise(std::unordered_map<std::string, std::string>& state);
-std::string leftAntiClockwise(std::unordered_map<std::string, std::string>& state);
-std::string leftDouble(std::unordered_map<std::string, std::string>& state);
+std::string leftClockwise(cubeMap& state);
+std::string leftAntiClockwise(cubeMap& state);
+std::string leftDouble(cubeMap& state);
 
-std::string rightClockwise(std::unordered_map<std::string, std::string>& state);
-std::string rightAntiClockwise(std::unordered_map<std::string, std::string>& state);
-std::string rightDouble(std::unordered_map<std::string, std::string>& state);
+std::string rightClockwise(cubeMap& state);
+std::string rightAntiClockwise(cubeMap& state);
+std::string rightDouble(cubeMap& state);
 
-std::string bottomClockwise(std::unordered_map<std::string, std::string>& state);
-std::string bottomAntiClockwise(std::unordered_map<std::string, std::string>& state);
-std::string bottomDouble(std::unordered_map<std::string, std::string>& state);
+std::string bottomClockwise(cubeMap& state);
+std::string bottomAntiClockwise(cubeMap& state);
+std::string bottomDouble(cubeMap& state);
 
-std::string endClockwise(std::unordered_map<std::string, std::string>& state);
-std::string endAntiClockwise(std::unordered_map<std::string, std::string>& state);
-std::string endDouble(std::unordered_map<std::string, std::string>& state);
+std::string endClockwise(cubeMap& state);
+std::string endAntiClockwise(cubeMap& state);
+std::string endDouble(cubeMap& state);
 
 rFunctions rotations(); 
 
