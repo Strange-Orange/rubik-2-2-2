@@ -30,11 +30,11 @@ struct VertexHash
 };
 
 std::string printCubeState(const Vertex& v);
-void initCube(cubeMap& cubeState);
+inline void initCube(cubeMap& cubeState);
 std::string traceBack(const Vertex& sv, std::unordered_map<Vertex, Vertex, VertexHash>& parent);
 void handleInput(int argc, char* args[], cubeMap& cube);
 bool checkCompletion(const cubeMap& sCurrentState);
-bool rotationRepeatOrReverse(const int pMove, const int cMove);
+inline bool rotationRepeatOrReverse(const int pMove, const int cMove);
 void addToAdj(const Vertex& vStart, std::unordered_map<Vertex, std::vector<Vertex>, VertexHash>& adj);
 std::string solveCube(cubeMap& cubeState);
 
@@ -49,7 +49,7 @@ std::string printCubeState(const Vertex& v)
 }
 
 // Setup a non scrambled cube
-void initCube(cubeMap& cubeState)
+inline void initCube(cubeMap& cubeState)
 {
     // Each of the 8 cubelets that make up the whole cube, each in all 3 orientations, each face is read as rotation around the 3 faces
     // The whole cube is never rotated, the whole cube is always in the same orientation
@@ -84,10 +84,9 @@ void initCube(cubeMap& cubeState)
 
 void handleInput(int argc, char* args[], cubeMap& cube)
 {
-    // Lazy code, should rewrite this
+    // Lazy code
     for (int arg = 1; arg < argc; arg++)
     {
-        const char* c = args[arg];
         if (std::strcmp(args[arg], "f") == 0)
             frontClockwise(cube);
         else if (std::strcmp(args[arg], "fa") == 0)
@@ -154,7 +153,7 @@ bool checkCompletion(const cubeMap& sCurrentState)
 // there no need to calculated it the state has already been found.
 // Also check if the opposite rotation will be performed to return to the previous state(front clockwise, front anti clockwise), this state will
 // have already been found so there is no need to calculate it. Return true if the cube state has already been found
-bool rotationRepeatOrReverse(const int pMove, const int cMove)
+inline bool rotationRepeatOrReverse(const int pMove, const int cMove)
 {
     if (cMove == pMove)
     {
@@ -172,7 +171,7 @@ bool rotationRepeatOrReverse(const int pMove, const int cMove)
     else
     {
         return false;
-    }  
+    } 
 }
 
 // Perform all rotations add then rotations to the key vStart in the adjlist 
