@@ -11,21 +11,19 @@
 // rotation functions
 const rFunctions g_rotations = rotations();
 
+std::hash<std::string> g_strHash;
 // The hash function used for an unordered_map needs to be a type. The operator() overload needs to be a const function
 struct VertexHash
 {
     size_t operator()(const Vertex& v) const
-    {
-        size_t result = 0;
-        const size_t prime = 31;
-        for (const std::pair<std::string, std::string>& cl: v.m_lState)
+    {        
+        std::string strState;
+        for (const std::pair<std::string, std::string>& cState: v.m_lState)
         {
-            for (const char& c: cl.second)
-            {
-                result = c + (result * prime);
-            }
+            strState += cState.second;
         }
-        return result;
+
+        return g_strHash(strState);
     }
 };
 
@@ -155,16 +153,14 @@ bool checkCompletion(const cubeMap& sCurrentState)
 // have already been found so there is no need to calculate it. Return true if the cube state has already been found
 inline bool rotationRepeatOrReverse(const int pMove, const int cMove)
 {
+    bool even = false;
+    if (cMove % 2 == 0)
+        even = true;
     if (cMove == pMove)
     {
         return true;
     }
-    else if (cMove % 2 == 0 && (pMove == cMove + 1))
-    {
-        return true;
-    }
-    // current move must be anti-clockwise
-    else if (pMove == cMove - 1)
+    else if ((even && pMove == cMove + 1) || (!even && cMove == pMove + 1))
     {
         return true;
     }
@@ -188,9 +184,8 @@ void addToAdj(const Vertex& vStart, std::unordered_map<Vertex, std::vector<Verte
         if (!rotationRepeatOrReverse(vStart.m_previousMoveIndex, func))
         {
             std::unordered_map<std::string, std::string> rotated = vStart.m_lState;
-            std::string rStr = g_rotations[func](rotated);
-            Vertex v(rotated, rStr, func);
-            adj.at(vStart).push_back(v);
+            // std::string rStr = g_rotations[func](rotated);
+            adj.at(vStart).emplace_back(Vertex(rotated, g_rotations[func](rotated), func));
         }
     }
 }
@@ -251,7 +246,7 @@ int main(int argc, char* args[])
     cubeMap cubeState;
     initCube(cubeState);
     handleInput(argc, args, cubeState);
-
+    
     std::string sol = solveCube(cubeState);
     std::cout << sol << std::endl;
 
