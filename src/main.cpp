@@ -246,7 +246,6 @@ int main(int argc, char* args[])
     cubeMap cubeState;
     initCube(cubeState);
     handleInput(argc, args, cubeState);
-    
     std::string sol = solveCube(cubeState);
     std::cout << sol << std::endl;
 

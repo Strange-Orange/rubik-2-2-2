@@ -46,27 +46,27 @@ std::string frontClockwise(cubeMap& state)
 std::string frontAntiClockwise(cubeMap& state)
 {
     // Front left upper to front left bottom
-    std::array<std::string, 3> temps;
-    getCubelet(temps, state, 9);
-
-    state["flb"] = state["fru"];
+    std::array<std::string, 3> flb;
+    getCubelet(flb, state, 9);
+    state["flb"] = state["flu"];
     state["blf"] = state["luf"];
     state["lfb"] = state["ufl"];
     // Front left bottom to front right bottom
-    std::array<std::string, 3> temps2;
-    getCubelet(temps2, state, 6);
-    state["frb"] = temps[0];
-    state["rbf"] = temps[1];
-    state["bfr"] = temps[2];
+    std::array<std::string, 3> frb;
+    getCubelet(frb, state, 6);
+    state["frb"] = flb[0];
+    state["rbf"] = flb[1];
+    state["bfr"] = flb[2];
     // Front right bottom to front right upper
-    getCubelet(temps, state, 3);
-    state["fru"] = temps2[0];
-    state["urf"] = temps2[1];
-    state["rfu"] = temps2[2];
+    std::array<std::string, 3> fru;
+    getCubelet(fru, state, 3);
+    state["fru"] = frb[0];
+    state["urf"] = frb[1];
+    state["rfu"] = frb[2];
     // Front right upper to front left upper
-    state["flu"] = temps[0];
-    state["luf"] = temps[1];
-    state["ufl"] = temps[2];
+    state["flu"] = fru[0];
+    state["luf"] = fru[1];
+    state["ufl"] = fru[2];
 
     return "f`";
 }
@@ -377,7 +377,7 @@ std::string endClockwise(cubeMap& state)
     state["ure"] = erb[1];
     state["reu"] = erb[2];
 
-    return "e";
+    return "ec";
 }
 
 std::string endAntiClockwise(cubeMap& state)
