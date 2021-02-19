@@ -101,14 +101,14 @@ void handleInput(int argc, char* args[], cubeMap& cube)
             rightClockwise(cube);
         else if (std::strcmp(args[arg], "ra") == 0)
             rightAntiClockwise(cube);
+        else if (std::strcmp(args[arg], "d") == 0)
+            downClockwise(cube);
+        else if (std::strcmp(args[arg], "da") == 0)
+            downAntiClockwise(cube);
         else if (std::strcmp(args[arg], "b") == 0)
-            bottomClockwise(cube);
+            backClockwise(cube);
         else if (std::strcmp(args[arg], "ba") == 0)
-            bottomAntiClockwise(cube);
-        else if (std::strcmp(args[arg], "e") == 0)
-            endClockwise(cube);
-        else if (std::strcmp(args[arg], "ea") == 0)
-            endAntiClockwise(cube);
+            backAntiClockwise(cube);
         else
             continue;
     }

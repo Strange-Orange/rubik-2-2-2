@@ -26,13 +26,13 @@ std::string rightClockwise(cubeMap& state);
 std::string rightAntiClockwise(cubeMap& state);
 std::string rightDouble(cubeMap& state);
 
-std::string bottomClockwise(cubeMap& state);
-std::string bottomAntiClockwise(cubeMap& state);
-std::string bottomDouble(cubeMap& state);
+std::string downClockwise(cubeMap& state);
+std::string downAntiClockwise(cubeMap& state);
+std::string downDouble(cubeMap& state);
 
-std::string endClockwise(cubeMap& state);
-std::string endAntiClockwise(cubeMap& state);
-std::string endDouble(cubeMap& state);
+std::string backClockwise(cubeMap& state);
+std::string backAntiClockwise(cubeMap& state);
+std::string backDouble(cubeMap& state);
 
 rFunctions rotations(); 
 

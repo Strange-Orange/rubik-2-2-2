@@ -20,12 +20,12 @@ l and la for left clockwise and anti-clockwise
 
 u and ua for upper clockwise and anti-clockwise
 
-b and ba for bottom clockwise and anti-clockwise
+d and da for down clockwise and anti-clockwise
 
-e and ea for end clockwise and anti-clockwise
+back and ba for back clockwise and anti-clockwise
 
 ### Example
 ```
-f ra b ea
+f ra d ba
 ```
-These arguments will perform a front clockwise, right anti-clockwise, bottom clockwise and a end anti-clockwise rotations on the cube.
+These arguments will perform a front clockwise, right anti-clockwise, down clockwise and a back anti-clockwise rotations on the cube.
