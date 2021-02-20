@@ -234,6 +234,9 @@ std::string solveCube(cubeMap& cubeState)
                 }
             } 
         }
+        // Remove no longer need states
+        for (Vertex& v: frontier)
+            v.m_lState.clear();
         level++;
         frontier = next;
     }
